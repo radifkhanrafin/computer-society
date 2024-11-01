@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+    margin: 0;
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    scroll-behavior: smooth;
+  }
+  .container{
+width: 80%;
+margin: 0 auto;
+  }
+  .rubik-wet-paint-regular {
+    font-family: "Rubik Wet Paint", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .zoom-container {
+    overflow: hidden; /* Hide overflow to keep images within the container */
+  }
+  
+  .zoom-image {
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+  }
+  
+  .zoom-image:hover {
+    transform: scale(1.1); /* Scale image on hover */
+  }
+  

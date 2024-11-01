@@ -1,0 +1,91 @@
+
+const data = [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "position": "President",
+      "email": "john.doe@example.com",
+      "phone": "+123456789",
+      "department": "Computer Science and Engineering",
+      "year": "4th Year",
+      "batch": "2019",
+      "shift": "Day",
+      "semester": "8th Semester",
+      "hobby": "Robotics, Gaming",
+      "skill": "C++, Python, Leadership",
+      "linkedin": "https://www.linkedin.com/in/johndoe",
+      "responsibilities": "Oversees all club activities and manages meetings.",
+      "profile_picture": "https://i.ibb.co/com/gF6vpB1/20221213-152946.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "position": "Vice President",
+      "email": "jane.smith@example.com",
+      "phone": "+987654321",
+      "department": "Information Technology",
+      "year": "3rd Year",
+      "batch": "2020",
+      "shift": "Evening",
+      "semester": "6th Semester",
+      "hobby": "Reading, Coding",
+      "skill": "Java, Project Management",
+      "linkedin": "https://www.linkedin.com/in/janesmith",
+      "responsibilities": "Assists the President and manages events.",
+      "profile_picture": "https://i.ibb.co/com/gF6vpB1/20221213-152947.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Alex Johnson",
+      "position": "Secretary",
+      "email": "alex.johnson@example.com",
+      "phone": "+123456000",
+      "department": "Computer Science",
+      "year": "2nd Year",
+      "batch": "2021",
+      "shift": "Day",
+      "semester": "4th Semester",
+      "hobby": "Photography, Gaming",
+      "skill": "C#, Communication",
+      "linkedin": "https://www.linkedin.com/in/alexjohnson",
+      "responsibilities": "Keeps records and takes meeting minutes.",
+      "profile_picture": "https://i.ibb.co/com/gF6vpB1/20221213-152948.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Emily Davis",
+      "position": "Treasurer",
+      "email": "emily.davis@example.com",
+      "phone": "+321654987",
+      "department": "Software Engineering",
+      "year": "4th Year",
+      "batch": "2019",
+      "shift": "Day",
+      "semester": "8th Semester",
+      "hobby": "Music, Traveling",
+      "skill": "Python, Budgeting",
+      "linkedin": "https://www.linkedin.com/in/emilydavis",
+      "responsibilities": "Manages club finances and budgets.",
+      "profile_picture": "https://i.ibb.co/com/gF6vpB1/20221213-152949.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Michael Brown",
+      "position": "Event Coordinator",
+      "email": "michael.brown@example.com",
+      "phone": "+456123789",
+      "department": "Web Development",
+      "year": "3rd Year",
+      "batch": "2020",
+      "shift": "Night",
+      "semester": "5th Semester",
+      "hobby": "Gaming, Hiking",
+      "skill": "JavaScript, Event Planning",
+      "linkedin": "https://www.linkedin.com/in/michaelbrown",
+      "responsibilities": "Plans and coordinates club events.",
+      "profile_picture": "https://i.ibb.co/com/gF6vpB1/20221213-152950.jpg"
+    }
+  ]
+  
+
+export default data;
