@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export function Footer() {
@@ -5,13 +6,9 @@ export function Footer() {
     <footer className="bg-slate-900 border-t border-slate-700/50">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <h3 className="text-lg font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-              WUBCS
-            </h3>
-            <p className="text-slate-400 text-sm">
-              World University of Bangladesh Computer Society
-            </p>
+          <div className="flex flex-col items-center justify-center" >
+            <Image src="/wub.png" alt="WUBCS" width={100} height={80} />
+
           </div>
 
           <div>
@@ -66,11 +63,12 @@ export function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div  className="flex flex-col gap-4 items-center justify-center">
             <h4 className="text-white font-semibold mb-4">Connect</h4>
-            <div className="flex gap-4">
+            <div className="flex gap-4 items-center justify-center">
               <a
-                href="#"
+                href="https://www.facebook.com/wubcs"
+                tearget="_blank"
                 className="w-10 h-10 rounded-full bg-slate-800 hover:bg-blue-600 flex items-center justify-center transition-colors text-white"
               >
                 f
