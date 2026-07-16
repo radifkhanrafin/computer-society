@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import Image from 'next/image'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,7 +13,7 @@ export function Navbar() {
     { label: 'About', href: '/about' },
     { label: 'Committee', href: '/committee' },
     { label: 'Events', href: '/events' },
-    { label: 'Members', href: '/members' },
+    // { label: 'Members', href: '/members' },
     { label: 'Blog', href: '/blog' },
     { label: 'Gallery', href: '/gallery' },
     { label: 'Contact', href: '/contact' },
@@ -22,7 +23,7 @@ export function Navbar() {
     <nav className="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-700/50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          WUBCS
+        <Image src="/wub.png" alt="WUBCS" width={60} height={50} /> 
         </Link>
 
         {/* Desktop Menu */}

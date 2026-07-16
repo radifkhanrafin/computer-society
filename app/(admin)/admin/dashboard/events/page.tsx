@@ -44,25 +44,46 @@ export default function EventsPage() {
     }
   }
 
-  const columns = [
-    { header: 'Title', accessor: 'title' },
-    { header: 'Date', accessor: 'date', render: (v: string) => new Date(v).toLocaleDateString() },
-    { header: 'Location', accessor: 'location' },
-    {
-      header: 'Actions',
-      accessor: 'actions',
-      render: (row: any) => (
-        <div className="flex gap-2">
-          <Button variant="ghost" size="sm" onClick={() => { setEditingId(row._id); setShowForm(true) }}>
-            <Edit2 className="w-4 h-4" />
-          </Button>
-          <Button variant="ghost" size="sm" onClick={() => handleDelete(row._id)}>
-            <Trash2 className="w-4 h-4" />
-          </Button>
-        </div>
-      ),
-    },
-  ]
+const columns = [
+  {
+    key: "name",
+    label: "Name",
+  },
+  {
+    key: "position",
+    label: "Position",
+  },
+  {
+    key: "year",
+    label: "Year",
+  },
+  {
+    key: "actions",
+    label: "Actions",
+    render: (_: any, row: any) => (
+      <div className="flex gap-2">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => {
+            setEditingId(row._id)
+            setShowForm(true)
+          }}
+        >
+          <Edit2 className="w-4 h-4" />
+        </Button>
+
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => handleDelete(row._id)}
+        >
+          <Trash2 className="w-4 h-4" />
+        </Button>
+      </div>
+    ),
+  },
+]
 
   return (
     <div className="space-y-6">

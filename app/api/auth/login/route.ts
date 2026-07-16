@@ -12,15 +12,15 @@ const loginSchema = z.object({
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    console.log("[Login POST] Request Body:", body);
+    // console.log("[Login POST] Request Body:", body);
     const validatedData = loginSchema.parse(body);
-    console.log("[Login POST] Validated Data:", validatedData);
+    // console.log("[Login POST] Validated Data:", validatedData);
     await connectDB();
 
     const admin = await Admin.findOne({ email: validatedData.email }).select(
       "+password",
     );
-    console.log("[Login POST] Retrieved Admin:", admin);
+    //  console.log("[Login POST] Retrieved Admin:", admin);
     if (!admin) {
       return NextResponse.json(
         {
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.error("  Login error:", error);
+    // console.error("  Login error:", error);
     return NextResponse.json(
       {
         success: false,

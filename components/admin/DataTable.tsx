@@ -23,14 +23,26 @@ export function DataTable({ data, columns, onEdit, onDelete, loading }: DataTabl
   const [searchTerm, setSearchTerm] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 10
+  // console.log('[DataTable] Props received:', data, columns, loading)
+  const filteredData = data.filter((item) => {
+    // console.log("Item:", item);
 
-  const filteredData = data.filter((item) =>
-    columns.some((col) => {
-      const value = item[col.key]
-      return value?.toString().toLowerCase().includes(searchTerm.toLowerCase())
-    })
-  )
+    return data.some((col) => {
+      const value = item[col.key];
 
+      console.log(
+        "key:",
+        col.key,
+        "value:",
+        value
+      );
+
+      return String(value ?? "")
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+    });
+  });
+  console.log('[DataTable] Filtered data:', filteredData, 'Search term:', searchTerm)
   const paginatedData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -57,11 +69,11 @@ export function DataTable({ data, columns, onEdit, onDelete, loading }: DataTabl
       </div>
 
       <div className="bg-slate-800/50 rounded-lg overflow-hidden border border-slate-700/50">
-        <table className="w-full">
+        <table className="w-full ">
           <thead>
             <tr className="border-b border-slate-700/50 bg-slate-800/80">
               {columns.map((col) => (
-                <th key={col.key} className="px-6 py-3 text-left text-sm font-semibold text-slate-300">
+                <th key={col.key} className="px-3 py-3 text-left text-sm font-semibold text-slate-300">
                   {col.label}
                 </th>
               ))}
@@ -94,7 +106,7 @@ export function DataTable({ data, columns, onEdit, onDelete, loading }: DataTabl
                       {col.render ? col.render(item[col.key], item) : item[col.key]?.toString() || '-'}
                     </td>
                   ))}
-                  <td className="px-6 py-4 text-sm space-x-2">
+                  <td className="px-6 py-6 text-sm  flex gap-2 items-center justify-center">
                     <Button
                       size="sm"
                       onClick={() => onEdit(item)}

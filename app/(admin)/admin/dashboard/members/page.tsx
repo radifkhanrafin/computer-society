@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { DataTable } from '@/components/admin/DataTable'
 import { Button } from '@/components/ui/button'
-import { MemberForm } from '@/components/admin/MemberForm'
+import MemberForm from '@/components/admin/MemberForm'
 
 interface Member {
   _id: string
@@ -62,11 +62,41 @@ export default function MembersPage() {
   }
 
   const columns = [
-    { key: 'name', label: 'Name' },
+    {
+      key: "profilePicture",
+      label: "Name",
+      render: (value, row) => (
+        <div className="flex  md:min-w-56 items-center gap-3">
+          <img
+            src={value}
+            alt={row.name}
+            className="w-12 h-12 rounded-full object-cover ring-2 ring-blue-500/30"
+          />
+
+          <div>
+            <p className="font-semibold text-white">
+              {row.name}
+            </p>
+
+            <p className="text-xs text-slate-400">
+              {row.position}
+            </p>
+          </div>
+        </div>
+      ),
+    },
+    // { key: 'name', label: 'Name' },
     { key: 'email', label: 'Email' },
     { key: 'phone', label: 'Phone' },
     { key: 'department', label: 'Department' },
     { key: 'batch', label: 'Batch' },
+    { key: 'isActive', label: 'Active',
+       render: (value, row) => (
+        <p className={`px-2 py-1 rounded-full text-xs font-semibold ${value ? 'bg-green-500 text-white' : 'bg-red-500 text-white'}`}>
+          {value ? 'Active' : 'Inactive'}
+        </p>  
+       )
+     },
   ]
 
   return (
@@ -89,7 +119,7 @@ export default function MembersPage() {
       </motion.div>
 
       {showForm && (
-        <MemberForm member={editingMember} onClose={handleFormClose} />
+        <MemberForm member={editingMember as any} onClose={handleFormClose} />
       )}
 
       <DataTable

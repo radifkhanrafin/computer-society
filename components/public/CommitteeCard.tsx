@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from 'react';
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -11,6 +12,7 @@ import {
   FaUserGraduate,
   FaIdCard,
 } from 'react-icons/fa';
+import { Button } from '../ui/button';
 
 interface Member {
   _id: string;
@@ -69,7 +71,7 @@ export default function CommitteeCard({
     bio,
     profilePicture,
   } = member;
-
+  const [expanded, setExpanded] = useState(false);
   return (
     <motion.div
       initial={{
@@ -209,6 +211,15 @@ export default function CommitteeCard({
           </div>
         </div>
 
+<AnimatePresence>
+  {expanded && (
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: .35 }}
+      className="overflow-hidden"
+    >
         {/* About */}
         <div className="mt-6">
           <h3 className="mb-3 text-lg font-semibold text-cyan-300">
@@ -286,7 +297,9 @@ export default function CommitteeCard({
             {responsibilities}
           </p>
         </div>
-
+ </motion.div>
+  )}
+</AnimatePresence>
         {/* Social Links */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           {facebook && (
@@ -372,6 +385,13 @@ export default function CommitteeCard({
             <FaEnvelope size={18} />
           </motion.a>
         </div>
+        <Button
+          variant="ghost"
+          onClick={() => setExpanded(!expanded)}
+          className="mt-6 w-full rounded-xl border border-cyan-500/20 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20"
+        >
+          {expanded ? "Show Less" : "See More"}
+        </Button>
       </div>
     </motion.div>
   );

@@ -1,24 +1,24 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { z } from 'zod'
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 
-import { connectDB } from '@/lib/db'
-import { getAuthUser } from '@/lib/auth'
-import Committee from '@/models/Committee'
+import { connectDB } from "@/lib/db";
+import { getAuthUser } from "@/lib/auth";
+import Committee from "@/models/Committee";
 
 const createCommitteeSchema = z.object({
-  identity: z.enum(['student', 'faculty', 'advisor']).default('student'),
+  identity: z.enum(["student", "faculty", "advisor"]).default("student"),
 
-  name: z.string().min(1, 'Name is required'),
+  name: z.string().min(1, "Name is required"),
 
-  position: z.string().min(1, 'Position is required'),
+  position: z.string().min(1, "Position is required"),
 
   studentID: z.string().optional(),
 
-  email: z.string().email('Invalid email').optional(),
+  email: z.string().email("Invalid email").optional(),
 
   phone: z.string().optional(),
 
-  department: z.string().min(1, 'Department is required'),
+  department: z.string().min(1, "Department is required"),
 
   year: z.string().optional(),
 
@@ -49,103 +49,103 @@ const createCommitteeSchema = z.object({
   order: z.number().default(0),
 
   isActive: z.boolean().default(true),
-})
+});
 
 export async function GET() {
   try {
-    await connectDB()
+    await connectDB();
 
     const committee = await Committee.find({
       isActive: true,
     }).sort({
       order: 1,
       createdAt: 1,
-    })
-console.log('[Committee GET] Retrieved committee members:', committee)
+    });
+    // console.log("[Committee GET] Retrieved committee members:", committee);
     return NextResponse.json(
       {
         success: true,
-        message: 'Committee members retrieved successfully',
+        message: "Committee members retrieved successfully",
         data: committee,
       },
       {
         status: 200,
-      }
-    )
+      },
+    );
   } catch (error) {
-    console.error('[Committee GET]', error)
+    console.error("[Committee GET]", error);
 
     return NextResponse.json(
       {
         success: false,
-        message: 'Internal Server Error',
+        message: "Internal Server Error",
       },
       {
         status: 500,
-      }
-    )
+      },
+    );
   }
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const user = await getAuthUser()
+    const user = await getAuthUser();
 
-    // if (!user) {
-    //   return NextResponse.json(
-    //     {
-    //       success: false,
-    //       message: 'Unauthorized',
-    //     },
-    //     {
-    //       status: 401,
-    //     }
-    //   )
-    // }
+    if (!user) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Unauthorized",
+        },
+        {
+          status: 401,
+        },
+      );
+    }
 
-    await connectDB()
+    await connectDB();
 
-    const body = await request.json()
-    console.log('[Committee POST] Request Body:', body)
+    const body = await request.json();
+    // console.log('[Committee POST] Request Body:', body)
 
-    const validatedData = createCommitteeSchema.parse(body)
+    const validatedData = createCommitteeSchema.parse(body);
 
-    const member = await Committee.create(validatedData)
+    const member = await Committee.create(validatedData);
 
     return NextResponse.json(
       {
         success: true,
-        message: 'Committee member created successfully',
+        message: "Committee member created successfully",
         data: member,
       },
       {
         status: 201,
-      }
-    )
+      },
+    );
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          message: 'Validation Error',
+          message: "Validation Error",
           errors: error.flatten().fieldErrors,
         },
         {
           status: 400,
-        }
-      )
+        },
+      );
     }
 
-    console.error('[Committee POST]', error)
+    console.error("[Committee POST]", error);
 
     return NextResponse.json(
       {
         success: false,
-        message: 'Internal Server Error',
+        message: "Internal Server Error",
       },
       {
         status: 500,
-      }
-    )
+      },
+    );
   }
 }

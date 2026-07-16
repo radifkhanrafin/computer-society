@@ -1,45 +1,99 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { connectDB } from '@/lib/db'
-import { getAuthUser } from '@/lib/auth'
-import Member from '@/models/Member'
 import { z } from 'zod'
 
-const createMemberSchema = z.object({
-  name: z.string().min(1, 'Name is required'),
-  email: z.string().email('Invalid email'),
-  phone: z.string().min(1, 'Phone is required'),
-  roll: z.string().optional(),
-  department: z.string().optional(),
+import { connectDB } from '@/lib/db'
+import { getAuthUser } from '@/lib/auth'
+import Committee from '@/models/Committee'
+
+const createCommitteeSchema = z.object({
+  identity: z.enum(['student', 'faculty', 'advisor']).default('student'),
+
+  name: z.string().min(1),
+
+  position: z.string().min(1),
+
+  studentID: z.string().optional(),
+
+  email: z.string().email().optional(),
+
+  phone: z.string().optional(),
+
+  department: z.string().min(1),
+
+  year: z.string().optional(),
+
   batch: z.string().optional(),
-  photo: z.string().optional(),
+
+  shift: z.string().optional(),
+
+  semester: z.string().optional(),
+
+  hobbies: z.array(z.string()).default([]),
+
+  skills: z.array(z.string()).default([]),
+
+  facebook: z.string().optional(),
+
+  linkedin: z.string().optional(),
+
+  github: z.string().optional(),
+
+  portfolio: z.string().optional(),
+
+  responsibilities: z.string().optional(),
+
   bio: z.string().optional(),
-  skills: z.array(z.string()).optional(),
-  social: z.object({
-    linkedin: z.string().optional(),
-    github: z.string().optional(),
-    twitter: z.string().optional(),
-    facebook: z.string().optional(),
-  }).optional(),
+
+  profilePicture: z.string().optional(),
+
+  order: z.number().default(0),
+
+  isActive: z.boolean().default(true),
 })
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
-    await connectDB()
-    const members = await Member.find().sort({ createdAt: -1 })
+    const user = await getAuthUser()
+console.log('[Committee GET] Authenticated user:', user)
+    if (!user) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Unauthorized',
+        },
+        {
+          status: 401,
+        }
+      )
+    }
 
+    await connectDB()
+
+    const members = await Committee.find().sort({
+      order: 1,
+      createdAt: -1,
+    })
+console.log('[Committee GET] Retrieved committee members:', members)
     return NextResponse.json(
       {
         success: true,
-        message: 'Members retrieved',
         data: members,
       },
-      { status: 200 }
+      {
+        status: 200,
+      }
     )
   } catch (error) {
-    console.error('  Get members error:', error)
+    console.error('[Committee GET]', error)
+
     return NextResponse.json(
-      { success: false, message: 'Server error' },
-      { status: 500 }
+      {
+        success: false,
+        message: 'Internal Server Error',
+      },
+      {
+        status: 500,
+      }
     )
   }
 }
@@ -47,44 +101,63 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const user = await getAuthUser()
+
     if (!user) {
       return NextResponse.json(
-        { success: false, message: 'Unauthorized' },
-        { status: 401 }
+        {
+          success: false,
+          message: 'Unauthorized',
+        },
+        {
+          status: 401,
+        }
       )
     }
 
-    const body = await request.json()
-    const validatedData = createMemberSchema.parse(body)
-
     await connectDB()
 
-    const member = await Member.create(validatedData)
+    const body = await request.json()
+
+    const validatedData =
+      createCommitteeSchema.parse(body)
+
+    const member =
+      await Committee.create(validatedData)
 
     return NextResponse.json(
       {
         success: true,
-        message: 'Member created successfully',
+        message: 'Committee member created successfully',
         data: member,
       },
-      { status: 201 }
+      {
+        status: 201,
+      }
     )
   } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          message: 'Validation error',
-          error: error.errors[0].message,
+          message: 'Validation Error',
+          errors: error.flatten().fieldErrors,
         },
-        { status: 400 }
+        {
+          status: 400,
+        }
       )
     }
 
-    console.error('  Create member error:', error)
+    console.error('[Committee POST]', error)
+
     return NextResponse.json(
-      { success: false, message: 'Server error' },
-      { status: 500 }
+      {
+        success: false,
+        message: 'Internal Server Error',
+      },
+      {
+        status: 500,
+      }
     )
   }
 }

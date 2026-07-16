@@ -1,17 +1,18 @@
-import mongoose, { Schema, Document } from 'mongoose'
+import mongoose, { Schema, Document } from "mongoose";
 
 export interface IEvent extends Document {
-  title: string
-  description: string
-  date: Date
-  time: string
-  location: string
-  banner?: string
-  category: string
-  attendees: number
-  status: 'upcoming' | 'ongoing' | 'completed'
-  createdAt: Date
-  updatedAt: Date
+  title: string;
+  description: string;
+  date: Date;
+  time: string;
+  location: string;
+  banner?: string;
+  category: string;
+  regestrationLink?: string;
+  attendees: number;
+  status: "upcoming" | "ongoing" | "completed";
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const EventSchema = new Schema<IEvent>(
@@ -43,18 +44,23 @@ const EventSchema = new Schema<IEvent>(
       required: true,
     },
     attendees: {
-      type: Number,
+      type: Number, 
       default: 0,
+    },
+    regestrationLink: {
+      type: String,
+      required: true,
     },
     status: {
       type: String,
-      enum: ['upcoming', 'ongoing', 'completed'],
-      default: 'upcoming',
+      enum: ["upcoming", "ongoing", "completed"],
+      default: "upcoming",
     },
   },
   {
     timestamps: true,
-  }
-)
+  },
+);
 
-export default mongoose.models.Event || mongoose.model<IEvent>('Event', EventSchema)
+export default mongoose.models.Event ||
+  mongoose.model<IEvent>("Event", EventSchema);

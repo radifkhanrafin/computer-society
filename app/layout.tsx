@@ -1,13 +1,16 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import './globals.css'
-import { Navbar } from '@/components/public/Navbar'
-import { Footer } from '@/components/public/Footer'
+import './globals.css' 
 
 export const metadata: Metadata = {
   title: 'WUBCS - World University of Bangladesh Computer Society',
   description: 'World University of Bangladesh Computer Society - Innovation, learning, and tech community',
-  generator: 'v0.app',
+  generator: 'mahfuz.web.dev',
+   icons: {
+    icon: "/wub.png",
+    shortcut: '/favicon.ico',
+    apple: '/wub.png',
+  },
   applicationName: 'WUBCS',
   referrer: 'origin-when-cross-origin',
   keywords: ['WUBCS', 'World University of Bangladesh', 'Computer Society', 'Tech Community', 'Innovation', 'Learning'],

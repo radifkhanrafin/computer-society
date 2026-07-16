@@ -209,8 +209,8 @@ export default function HomePage() {
                   size="lg"
                   className="h-14 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 px-8 text-base font-semibold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50"
                 >
-                  <Link href="/members">
-                    Explore Members →
+                  <Link href="/committee">
+                    Explore Committee →
                   </Link>
                 </Button>
 
