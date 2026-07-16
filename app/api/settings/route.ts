@@ -1,0 +1,102 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { connectDB } from '@/lib/db'
+import { getAuthUser } from '@/lib/auth'
+import Settings from '@/models/Settings'
+import { z } from 'zod'
+
+const updateSettingsSchema = z.object({
+  siteName: z.string().optional(),
+  logo: z.string().optional(),
+  favicon: z.string().optional(),
+  heroBanner: z.string().optional(),
+  phone: z.string().optional(),
+  email: z.string().email().optional(),
+  address: z.string().optional(),
+  social: z.object({
+    facebook: z.string().optional(),
+    twitter: z.string().optional(),
+    linkedin: z.string().optional(),
+    instagram: z.string().optional(),
+    youtube: z.string().optional(),
+    github: z.string().optional(),
+  }).optional(),
+  aboutText: z.string().optional(),
+})
+
+export async function GET(request: NextRequest) {
+  try {
+    await connectDB()
+    let settings = await Settings.findOne()
+
+    if (!settings) {
+      settings = await Settings.create({
+        siteName: 'WUBCS',
+        phone: '',
+        email: '',
+        address: '',
+        social: {},
+      })
+    }
+
+    return NextResponse.json(
+      { success: true, message: 'Settings retrieved', data: settings },
+      { status: 200 }
+    )
+  } catch (error) {
+    console.error('[v0] Get settings error:', error)
+    return NextResponse.json(
+      { success: false, message: 'Server error' },
+      { status: 500 }
+    )
+  }
+}
+
+export async function PUT(request: NextRequest) {
+  try {
+    const user = await getAuthUser()
+    if (!user) {
+      return NextResponse.json(
+        { success: false, message: 'Unauthorized' },
+        { status: 401 }
+      )
+    }
+
+    const body = await request.json()
+    const validatedData = updateSettingsSchema.parse(body)
+
+    await connectDB()
+
+    let settings = await Settings.findOne()
+    if (!settings) {
+      settings = await Settings.create({
+        siteName: 'WUBCS',
+        phone: '',
+        email: '',
+        address: '',
+        social: {},
+      })
+    }
+
+    settings = await Settings.findByIdAndUpdate(settings._id, validatedData, {
+      new: true,
+      runValidators: true,
+    })
+
+    return NextResponse.json(
+      { success: true, message: 'Settings updated successfully', data: settings },
+      { status: 200 }
+    )
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { success: false, message: 'Validation error', error: error.errors[0].message },
+        { status: 400 }
+      )
+    }
+    console.error('[v0] Update settings error:', error)
+    return NextResponse.json(
+      { success: false, message: 'Server error' },
+      { status: 500 }
+    )
+  }
+}
