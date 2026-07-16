@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get sponsors error:', error)
+    console.error('  Get sponsors error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
-    console.error('[v0] Create sponsor error:', error)
+    console.error('  Create sponsor error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

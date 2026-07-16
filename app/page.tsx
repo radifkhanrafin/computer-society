@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { Navbar } from '@/components/public/Navbar'
+import { Footer } from '@/components/public/Footer'
 
 export default function HomePage() {
   const stats = [
@@ -37,6 +39,7 @@ export default function HomePage() {
 
   return (
     <div className="pt-16">
+      <Navbar />
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-whitext-white relative overflow-hidden">
         {/* Background Elements */}
@@ -89,13 +92,13 @@ export default function HomePage() {
               className="flex gap-4 justify-center flex-wrap"
             >
               <Button
-                
+
                 className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-6 text-lg"
               >
                 <Link href="/events">Explore Events</Link>
               </Button>
               <Button
-                
+
                 variant="outline"
                 className="bg-slate-800 border-slate-600 text-white hover:bg-slate-700 px-8 py-6 text-lg"
               >
@@ -162,92 +165,94 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-   {/* Premium CTA Section */}
-<section className="relative overflow-hidden py-28">
-  {/* Background */}
-  <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-whitext-white" />
+      {/* Premium CTA Section */}
+      <section className="relative overflow-hidden py-28">
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-whitext-white" />
 
-  {/* Gradient Glow */}
-  <div className="absolute -top-32 left-1/2 h-[450px] w-[450px] -translate-x-1/2 rounded-full bg-blue-600/20 blur-[140px]" />
-  <div className="absolute bottom-0 right-0 h-[350px] w-[350px] rounded-full bg-purple-600/20 blur-[120px]" />
-  <div className="absolute top-10 left-10 h-[250px] w-[250px] rounded-full bg-cyan-500/10 blur-[100px]" />
+        {/* Gradient Glow */}
+        <div className="absolute -top-32 left-1/2 h-[450px] w-[450px] -translate-x-1/2 rounded-full bg-blue-600/20 blur-[140px]" />
+        <div className="absolute bottom-0 right-0 h-[350px] w-[350px] rounded-full bg-purple-600/20 blur-[120px]" />
+        <div className="absolute top-10 left-10 h-[250px] w-[250px] rounded-full bg-cyan-500/10 blur-[100px]" />
 
-  <div className="container relative z-10 mx-auto px-6">
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7 }}
-      viewport={{ once: true }}
-      className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-12 backdrop-blur-xl shadow-[0_0_80px_rgba(59,130,246,0.15)]"
-    >
-      <div className="text-center">
-        <span className="inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-5 py-2 text-sm font-medium text-blue-400">
-          🚀 Join the WUBCS Community
-        </span>
-
-        <h2 className="mt-8 text-4xl font-extrabold leading-tight text-white md:text-6xl">
-          Build.
-          <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
-            {" "}
-            Learn.
-          </span>
-          {" "}Innovate Together.
-        </h2>
-
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
-          Become part of the World University of Bangladesh Computer Society.
-          Connect with passionate developers, participate in workshops,
-          hackathons, programming contests, and shape the future of technology.
-        </p>
-
-        <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
-          <Button
-            
-            size="lg"
-            className="h-14 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 px-8 text-base font-semibold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50"
+        <div className="container relative z-10 mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-12 backdrop-blur-xl shadow-[0_0_80px_rgba(59,130,246,0.15)]"
           >
-            <Link href="/members">
-              Explore Members →
-            </Link>
-          </Button>
+            <div className="text-center">
+              <span className="inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-5 py-2 text-sm font-medium text-blue-400">
+                🚀 Join the WUBCS Community
+              </span>
 
-          <Button
-            
-            variant="outline"
-            size="lg"
-            className="h-14 rounded-xl border-white/15 bg-white/5 px-8 text-base text-white backdrop-blur-md transition-all duration-300 hover:bg-white/10"
-          >
-            <Link href="/events">
-              Upcoming Events
-            </Link>
-          </Button>
+              <h2 className="mt-8 text-4xl font-extrabold leading-tight text-white md:text-6xl">
+                Build.
+                <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
+                  {" "}
+                  Learn.
+                </span>
+                {" "}Innovate Together.
+              </h2>
+
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
+                Become part of the World University of Bangladesh Computer Society.
+                Connect with passionate developers, participate in workshops,
+                hackathons, programming contests, and shape the future of technology.
+              </p>
+
+              <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
+                <Button
+
+                  size="lg"
+                  className="h-14 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 px-8 text-base font-semibold text-white shadow-lg shadow-blue-600/30 transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50"
+                >
+                  <Link href="/members">
+                    Explore Members →
+                  </Link>
+                </Button>
+
+                <Button
+
+                  variant="outline"
+                  size="lg"
+                  className="h-14 rounded-xl border-white/15 bg-white/5 px-8 text-base text-white backdrop-blur-md transition-all duration-300 hover:bg-white/10"
+                >
+                  <Link href="/events">
+                    Upcoming Events
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="mt-14 grid grid-cols-2 gap-8 border-t border-white/10 pt-10 md:grid-cols-4">
+                <div>
+                  <h3 className="text-3xl font-bold text-white">500+</h3>
+                  <p className="mt-2 text-sm text-slate-400">Active Members</p>
+                </div>
+
+                <div>
+                  <h3 className="text-3xl font-bold text-white">100+</h3>
+                  <p className="mt-2 text-sm text-slate-400">Events Organized</p>
+                </div>
+
+                <div>
+                  <h3 className="text-3xl font-bold text-white">25+</h3>
+                  <p className="mt-2 text-sm text-slate-400">Workshops</p>
+                </div>
+
+                <div>
+                  <h3 className="text-3xl font-bold text-white">10+</h3>
+                  <p className="mt-2 text-sm text-slate-400">Hackathons</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
+      </section>
 
-        <div className="mt-14 grid grid-cols-2 gap-8 border-t border-white/10 pt-10 md:grid-cols-4">
-          <div>
-            <h3 className="text-3xl font-bold text-white">500+</h3>
-            <p className="mt-2 text-sm text-slate-400">Active Members</p>
-          </div>
-
-          <div>
-            <h3 className="text-3xl font-bold text-white">100+</h3>
-            <p className="mt-2 text-sm text-slate-400">Events Organized</p>
-          </div>
-
-          <div>
-            <h3 className="text-3xl font-bold text-white">25+</h3>
-            <p className="mt-2 text-sm text-slate-400">Workshops</p>
-          </div>
-
-          <div>
-            <h3 className="text-3xl font-bold text-white">10+</h3>
-            <p className="mt-2 text-sm text-slate-400">Hackathons</p>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  </div>
-</section>
+      <Footer/>
     </div>
   )
 }

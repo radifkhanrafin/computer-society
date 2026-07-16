@@ -73,7 +73,7 @@ export function MemberForm({ member, onClose }: MemberFormProps) {
       onClose()
     } catch (err) {
       setError('An error occurred')
-      console.error('[v0] Form error:', err)
+      console.error('  Form error:', err)
     } finally {
       setLoading(false)
     }

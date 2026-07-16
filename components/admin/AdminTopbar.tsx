@@ -25,7 +25,7 @@ export function AdminTopbar() {
           setAdmin(data.data)
         }
       } catch (error) {
-        console.error('[v0] Fetch admin error:', error)
+        console.error('  Fetch admin error:', error)
       } finally {
         setLoading(false)
       }
@@ -39,7 +39,7 @@ export function AdminTopbar() {
       await fetch('/api/auth/logout', { method: 'POST' })
       router.push('/admin/login')
     } catch (error) {
-      console.error('[v0] Logout error:', error)
+      console.error('  Logout error:', error)
     }
   }
 

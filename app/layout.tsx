@@ -65,7 +65,7 @@ export default function RootLayout({
           This is where the main content of each page will be injected.
         */}
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   )

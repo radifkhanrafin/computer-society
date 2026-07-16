@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Logout error:', error)
+    console.error('  Logout error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

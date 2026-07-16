@@ -35,7 +35,7 @@ export default function MembersPage() {
         setMembers(data.data || [])
       }
     } catch (error) {
-      console.error('[v0] Fetch members error:', error)
+      console.error('Fetch members error:', error)
     } finally {
       setLoading(false)
     }
@@ -51,7 +51,7 @@ export default function MembersPage() {
         setMembers(members.filter((m) => m._id !== member._id))
       }
     } catch (error) {
-      console.error('[v0] Delete member error:', error)
+      console.error('Delete member error:', error)
     }
   }
 

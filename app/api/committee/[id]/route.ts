@@ -48,7 +48,7 @@ export async function GET(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get committee member error:', error)
+    console.error('  Get committee member error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -115,7 +115,7 @@ export async function PUT(
       )
     }
 
-    console.error('[v0] Update committee member error:', error)
+    console.error('  Update committee member error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -164,7 +164,7 @@ export async function DELETE(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Delete committee member error:', error)
+    console.error('  Delete committee member error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

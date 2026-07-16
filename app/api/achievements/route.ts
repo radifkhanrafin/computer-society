@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get achievements error:', error)
+    console.error('  Get achievements error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
-    console.error('[v0] Create achievement error:', error)
+    console.error('  Create achievement error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

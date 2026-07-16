@@ -50,7 +50,7 @@ export async function GET(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get event error:', error)
+    console.error('  Get event error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -117,7 +117,7 @@ export async function PUT(
       )
     }
 
-    console.error('[v0] Update event error:', error)
+    console.error('  Update event error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -166,7 +166,7 @@ export async function DELETE(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Delete event error:', error)
+    console.error('  Delete event error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

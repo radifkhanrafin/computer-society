@@ -23,14 +23,14 @@ export async function verifyToken(token: string): Promise<JwtPayload | null> {
     const decoded = jwt.verify(token, JWT_SECRET) as JwtPayload
     return decoded
   } catch (error) {
-    console.error('[v0] Token verification failed:', error)
+    console.error('  Token verification failed:', error)
     return null
   }
 }
 
 export async function setAuthCookie(token: string) {
   const cookieStore = await cookies()
-  console.log('[v0] Setting auth cookie with token:', token)
+  console.log('  Setting auth cookie with token:', token)
   cookieStore.set('auth_token', token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',

@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get galleries error:', error)
+    console.error('  Get galleries error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -57,7 +57,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
-    console.error('[v0] Create gallery error:', error)
+    console.error('  Create gallery error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

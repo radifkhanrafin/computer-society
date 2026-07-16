@@ -28,7 +28,7 @@ export default function CommitteePage() {
           setCommittee(data.data || [])
         }
       } catch (error) {
-        console.error('[v0] Fetch committee error:', error)
+        console.error('Fetch committee error:', error)
       } finally {
         setLoading(false)
       }

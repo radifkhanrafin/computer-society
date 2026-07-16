@@ -37,7 +37,7 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get user error:', error)
+    console.error('  Get user error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

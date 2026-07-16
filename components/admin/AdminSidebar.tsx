@@ -25,7 +25,7 @@ export function AdminSidebar() {
       animate={{ x: 0 }}
       className="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-slate-900 to-slate-800 border-r border-slate-700/50 overflow-y-auto pt-6"
     >
-      <Link href="/admin/dashboard" className="px-6 mb-8 block">
+      <Link href="/" className="px-6 mb-8 block">
         <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
           WUBCS
         </div>

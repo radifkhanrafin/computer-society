@@ -55,9 +55,9 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 ml-12 mb-12">
       <h1 className="text-3xl font-bold">Site Settings</h1>
-      <div className="max-w-2xl space-y-6 border border-border rounded-lg p-6 bg-card">
+      <div className="max-w-2xl text-black space-y-6 border border-border rounded-lg p-6 bg-card">
         <div>
           <label className="text-sm font-medium">Site Title</label>
           <Input

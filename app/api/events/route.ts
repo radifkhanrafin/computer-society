@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get events error:', error)
+    console.error('  Get events error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.error('[v0] Create event error:', error)
+    console.error('  Create event error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

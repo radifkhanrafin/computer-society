@@ -26,7 +26,7 @@ export default function GalleryPage() {
           setGalleries(data.data || [])
         }
       } catch (error) {
-        console.error('[v0] Fetch galleries error:', error)
+        console.error('Fetch galleries error:', error)
       } finally {
         setLoading(false)
       }

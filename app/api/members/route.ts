@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get members error:', error)
+    console.error('  Get members error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.error('[v0] Create member error:', error)
+    console.error('  Create member error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

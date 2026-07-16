@@ -39,7 +39,7 @@ export async function GET(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get sponsor error:', error)
+    console.error('  Get sponsor error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -95,7 +95,7 @@ export async function PUT(
         { status: 400 }
       )
     }
-    console.error('[v0] Update sponsor error:', error)
+    console.error('  Update sponsor error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -138,7 +138,7 @@ export async function DELETE(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Delete sponsor error:', error)
+    console.error('  Delete sponsor error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

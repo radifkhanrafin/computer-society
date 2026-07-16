@@ -30,7 +30,7 @@ export default function MembersPage() {
           setMembers(data.data || [])
         }
       } catch (error) {
-        console.error('[v0] Fetch members error:', error)
+        console.error('Fetch members error:', error)
       } finally {
         setLoading(false)
       }

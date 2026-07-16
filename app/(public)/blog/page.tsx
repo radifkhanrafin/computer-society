@@ -28,7 +28,7 @@ export default function BlogPage() {
           setBlogs(data.data || [])
         }
       } catch (error) {
-        console.error('[v0] Fetch blogs error:', error)
+        console.error(' Fetch blogs error:', error)
       } finally {
         setLoading(false)
       }

@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.error("[v0] Login error:", error);
+    console.error("  Login error:", error);
     return NextResponse.json(
       {
         success: false,

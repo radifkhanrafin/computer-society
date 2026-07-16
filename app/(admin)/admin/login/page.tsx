@@ -28,7 +28,7 @@ export default function LoginPage() {
       })
 
       const data = await response.json()
-console.log('[v0] Login response:', data)
+console.log('  Login response:', data)
       if (!response.ok) {
         setError(data.error || 'Login failed')
         return
@@ -38,7 +38,7 @@ console.log('[v0] Login response:', data)
       router.push('/admin/dashboard')
     } catch (err) {
       setError('An error occurred. Please try again.')
-      console.error('[v0] Login error:', err)
+      console.error('  Login error:', err)
     } finally {
       setLoading(false)
     }

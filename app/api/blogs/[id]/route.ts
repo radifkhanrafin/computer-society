@@ -45,7 +45,7 @@ export async function GET(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get blog error:', error)
+    console.error('  Get blog error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -101,7 +101,7 @@ export async function PUT(
         { status: 400 }
       )
     }
-    console.error('[v0] Update blog error:', error)
+    console.error('  Update blog error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -144,7 +144,7 @@ export async function DELETE(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Delete blog error:', error)
+    console.error('  Delete blog error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

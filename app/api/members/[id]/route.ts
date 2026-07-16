@@ -56,7 +56,7 @@ export async function GET(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get member error:', error)
+    console.error('  Get member error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -123,7 +123,7 @@ export async function PUT(
       )
     }
 
-    console.error('[v0] Update member error:', error)
+    console.error('  Update member error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -172,7 +172,7 @@ export async function DELETE(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Delete member error:', error)
+    console.error('  Delete member error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

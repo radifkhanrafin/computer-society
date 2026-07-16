@@ -28,7 +28,7 @@ export default function EventsPage() {
           setEvents(data.data || [])
         }
       } catch (error) {
-        console.error('[v0] Fetch events error:', error)
+        console.error('Fetch events error:', error)
       } finally {
         setLoading(false)
       }

@@ -41,7 +41,7 @@ export async function GET(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get achievement error:', error)
+    console.error('  Get achievement error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -97,7 +97,7 @@ export async function PUT(
         { status: 400 }
       )
     }
-    console.error('[v0] Update achievement error:', error)
+    console.error('  Update achievement error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -140,7 +140,7 @@ export async function DELETE(
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Delete achievement error:', error)
+    console.error('  Delete achievement error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

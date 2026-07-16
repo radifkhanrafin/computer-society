@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get settings error:', error)
+    console.error('  Get settings error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -93,7 +93,7 @@ export async function PUT(request: NextRequest) {
         { status: 400 }
       )
     }
-    console.error('[v0] Update settings error:', error)
+    console.error('  Update settings error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

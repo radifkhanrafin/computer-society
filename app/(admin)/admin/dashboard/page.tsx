@@ -74,7 +74,7 @@ export default function DashboardPage() {
           sponsors: sponsorsData.data?.length || 0,
         })
       } catch (error) {
-        console.error('[v0] Fetch stats error:', error)
+        console.error('Fetch stats error:', error)
       } finally {
         setLoading(false)
       }

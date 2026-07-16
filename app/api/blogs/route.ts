@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
-    console.error('[v0] Get blogs error:', error)
+    console.error('  Get blogs error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       )
     }
-    console.error('[v0] Create blog error:', error)
+    console.error('  Create blog error:', error)
     return NextResponse.json(
       { success: false, message: 'Server error' },
       { status: 500 }

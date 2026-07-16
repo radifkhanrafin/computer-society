@@ -27,11 +27,11 @@ export async function connectDB() {
         bufferCommands: false,
       })
       .then((mongoose) => {
-        console.log('[v0] MongoDB connected successfully')
+        console.log('  MongoDB connected successfully')
         return mongoose
       })
       .catch((err) => {
-        console.error('[v0] MongoDB connection error:', err)
+        console.error('  MongoDB connection error:', err)
         throw err
       })
   }
