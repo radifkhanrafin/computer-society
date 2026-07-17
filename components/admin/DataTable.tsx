@@ -30,19 +30,12 @@ export function DataTable({ data, columns, onEdit, onDelete, loading }: DataTabl
     return data.some((col) => {
       const value = item[col.key];
 
-      console.log(
-        "key:",
-        col.key,
-        "value:",
-        value
-      );
-
       return String(value ?? "")
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
     });
   });
-  console.log('[DataTable] Filtered data:', filteredData, 'Search term:', searchTerm)
+  // console.log('[DataTable] Filtered data:', filteredData, 'Search term:', searchTerm)
   const paginatedData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage

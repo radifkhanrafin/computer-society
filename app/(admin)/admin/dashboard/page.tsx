@@ -84,13 +84,13 @@ export default function DashboardPage() {
   }, [])
 
   const statItems = [
-    { label: 'Members', value: stats.members, icon: '👥', color: 'from-blue-600 to-blue-400' },
-    { label: 'Events', value: stats.events, icon: '📅', color: 'from-purple-600 to-purple-400' },
-    { label: 'Blogs', value: stats.blogs, icon: '📝', color: 'from-pink-600 to-pink-400' },
-    { label: 'Gallery', value: stats.gallery, icon: '🖼️', color: 'from-green-600 to-green-400' },
-    { label: 'Committee', value: stats.committee, icon: '🎯', color: 'from-yellow-600 to-yellow-400' },
-    { label: 'Achievements', value: stats.achievements, icon: '🏆', color: 'from-orange-600 to-orange-400' },
-    { label: 'Sponsors', value: stats.sponsors, icon: '💼', color: 'from-red-600 to-red-400' },
+    { label: 'Members', value: stats.members, icon: '', color: '' },
+    { label: 'Events', value: stats.events, icon: '', color: ' ' },
+    { label: 'Blogs', value: stats.blogs, icon: '', color: ' ' },
+    { label: 'Gallery', value: stats.gallery, icon: '', color: ' ' },
+    { label: 'Committee', value: stats.committee, icon: '', color: ' ' },
+    { label: 'Achievements', value: stats.achievements, icon: '', color: ' ' },
+    { label: 'Sponsors', value: stats.sponsors, icon: '', color: ' ' },
   ]
 
   return (

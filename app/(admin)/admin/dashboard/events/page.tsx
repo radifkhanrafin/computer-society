@@ -105,7 +105,7 @@ const columns = [
         />
       )}
 
-      <DataTable columns={columns} data={data} loading={loading} />
+      <DataTable columns={columns} data={data} loading={loading} onEdit={(id) => { setEditingId(id); setShowForm(true) }} onDelete={handleDelete} />
     </div>
   )
 }

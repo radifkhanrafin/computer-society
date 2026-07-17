@@ -132,7 +132,7 @@ console.log('  Login response:', data)
             transition={{ delay: 0.4 }}
             className="text-center text-sm text-slate-400 mt-6"
           >
-            For demo purposes, use admin credentials
+            Use admin credentials
           </motion.p>
         </div>
       </motion.div>

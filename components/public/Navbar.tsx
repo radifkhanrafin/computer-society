@@ -4,10 +4,13 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import Image from 'next/image'
+import { useTheme } from 'next-themes'
+import { Button } from '../ui/button'
+import { Moon, Sun } from 'lucide-react'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-
+  const { theme, setTheme } = useTheme();
   const navItems = [
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
@@ -23,7 +26,7 @@ export function Navbar() {
     <nav className="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-700/50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-        <Image src="/wub.png" alt="WUBCS" width={60} height={50} /> 
+          <Image src="/wub.png" alt="WUBCS" width={60} height={50} />
         </Link>
 
         {/* Desktop Menu */}
@@ -38,7 +41,12 @@ export function Navbar() {
             </Link>
           ))}
         </div>
-
+        {/* <Button
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="rounded-lg border p-2"
+        >
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        </Button> */}
         {/* Mobile Menu Button */}
         <button
           className="md:hidden text-white"

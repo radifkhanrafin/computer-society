@@ -52,7 +52,7 @@ export default function HomePage() {
               duration: 8,
               repeat: Infinity,
             }}
-            className="absolute top-10 left-10 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl"
+            className="absolute top-10 left-10 w-72 h-72 bg-blue-600/20 rounded-full blur-2xl"
           />
           <motion.div
             animate={{
@@ -163,8 +163,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
+ 
       {/* Premium CTA Section */}
       <section className="relative overflow-hidden py-28">
         {/* Background */}
@@ -252,7 +251,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Footer/>
+      <Footer />
     </div>
   )
 }

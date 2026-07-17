@@ -44,7 +44,7 @@ export default function CommitteePage() {
           <img
             src={value}
             alt={row.name}
-            className="w-14 h-12 rounded-full  object-cover ring-2 ring-blue-500/30"
+            className="w-12 h-12 rounded-full  object-cover ring-2 ring-blue-500/30"
           />
 
           <div>
@@ -89,9 +89,9 @@ export default function CommitteePage() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">Committee Management</h1>
-        <Button onClick={() => { setEditingId(null); setShowForm(true) }}>
+        {/* <Button onClick={() => { setEditingId(null); setShowForm(true) }}>
           <Plus className="w-4 h-4 mr-2" /> Add Committee Member
-        </Button>
+        </Button> */}
       </div>
 
       {showForm && (
